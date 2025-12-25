@@ -1,14 +1,17 @@
 package main
 
 import (
-	"fmt"
+	"fmt" // file scope import
 	"go/io/data"
 )
 
 // golobal variable
 //var url = "https://go.dev"
-var name = "Go master"
-// function that will initialize the func when we start the app
+var name = "Go master"   // package scope variable
+
+
+// init function that will initialize the func when we start the app. // kind of function overloading
+// We can have multiple init functions in the same file and they will be executed in the order they are defined
 func init(){
 	fmt.Println("A")
 }
@@ -38,12 +41,12 @@ func main(){
 	_,cityTax,_ := calculateTax(100)  // ":=" works only within the function - shorcut for var and type
 	fmt.Println(cityTax)
 
-	_,cityTaxx := calculateTaxWithName(100)
+	_,cityTaxx := calculateTaxWithName(100)     //local / block scoped variable
 	fmt.Println(cityTaxx)
 	// function-scoped variables
-	// const maxSpeed = 60.   0
+	// const maxSpeed = 60.0
 	//  message := "Hello from a module"
-	//  price := 34. 4
+	//  price := 34.4
 	//  var isready bool
 	// print(message,price,url,isready)
 
