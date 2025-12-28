@@ -14,7 +14,7 @@ func main(){
 	if err == nil{
 		fmt.Println(c)
 		// newContent := "Original: " + c + " \n Double the original: " + c + c
-		newContent := fmt.Sprintf("Original: %v\n Double Original: %v%v", c,c,c)
+ 		newContent := fmt.Sprintf("Original: %v\n Double Original: %v%v", c,c,c)
 		fileutils.WriteToFile(filePath + ".output.txt",newContent)
 	} else {
 		fmt.Printf("Error %v",err)

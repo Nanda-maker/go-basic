@@ -29,13 +29,15 @@ cityTaxx = price * 0.02
 }
 func birthday(pointerAge *int){
 	if (*pointerAge > 140){
-		panic("Too old to be true")
+		panic("Too old to be true") // stops the execution of the program
 	}
 	fmt.Printf("the pointer is %v and the value is %v\n",pointerAge, *pointerAge)
 	*pointerAge++
 }
 
 func main(){
+
+	defer fmt.Println("Good!") //execution at the end until the function call that line.
 
 	fmt.Println(data.MaxSpeed)
 	_,cityTax,_ := calculateTax(100)  // ":=" works only within the function - shorcut for var and type

@@ -24,11 +24,11 @@ func init(){
 	   //  = operator creates a copy of an array.
     // the arrays are not connected and are saved in different memory locations
     m := [3]int{1, 2, 3}
-    n := m //n is a copy of m
+    p := m //n is a copy of m
  
-    fmt.Println("n is equal to m: ", n == m) // => true
+    fmt.Println("n is equal to m: ", p == m) // => true
     m[0] = -1                                //only m is modified
-    fmt.Println("n is equal to m: ", n == m) // => false
+    fmt.Println("n is equal to m: ", p == m) // => false
 
 	fmt.Println(strings.Repeat("#",20))
 	  // changing an array
@@ -75,6 +75,89 @@ func init(){
         1:        "NYC",
     }
     fmt.Printf("%#v\n", cities) // -> [7]string{"", "NYC", "", "", "", "Paris", "London"}
+
+		// declaring a string slice, by default is initialized with nil or uninitialized
+	var citiess []string
+ 
+	fmt.Println("cities is equal to nil: ", citiess == nil) // -> cities is equal to nil:  true
+	fmt.Printf("cities: %#v\n", cities)                    // -> cities: []string(nil)
+ 
+	// we can not assign elements to nil slice:
+	// cities[0] = "Paris" // -> runtime error
+ 
+	// declaring a slice using a slice literal
+	numbers := []int{2, 3, 4, 5} // on the right hand-side of the equal sign is a slice literal
+	fmt.Println(numbers)         // => [2 3 4 5]
+ 
+	// creating a slice using the make() built-in function
+	// creating a slice with 2 int elements initialized with zero.
+	nums := make([]int, 2) // the same as []int{0, 0}.
+	fmt.Println(nums)      // => [0 0]
+ 
+	// declaring a slice using a slice literal
+	type namess []string
+	friends := namess{"Dan", "Maria"}
+	fmt.Println(friends)
+ 
+	// getting an element from the slice
+	x := numbers[0]
+	fmt.Println("x is", x) // => x is 2
+ 
+	// modifying an element of the slice
+	numbers[1] = 200
+	fmt.Printf("%#v\n", numbers) // => []int{2, 200, 4, 5}
+ 
+	// iterating over a slice
+	for index, value := range numbers {
+		fmt.Printf("index: %v, value: %v\n", index, value)
+	}
+ 
+	//iterating over a slice (C/C++, Java Style)
+	for i := 0; i < len(numbers); i++ {
+		fmt.Printf("index: %v, value: %v\n", i, numbers[i])
+ 
+	}
+ 
+	// slices with the same element type can be assigned to each other
+	var n []int
+	n = numbers
+	_ = n
+ 
+	//** COMPARING SLICES **//
+	// a Go slice can only be compared to nil
+ 
+	// uninitialized slice, equal to nil
+	var nn []int
+	fmt.Println(nn == nil) // true
+ 
+	// empty slice but initialized, not equal to nil
+	mm := []int{}
+	fmt.Println(mm == nil) //false
+ 
+	// we can not compare slices using the equal (=) operator
+	// fmt.Println(nn == mm) //error -> slice can only be compared to nil
+ 
+	// to compare 2 slices use a for loop to iterate over the slices and compare element by element
+    // it's also necessary to check the length of slices (if a is nil it doesn't enter the for loop)
+    a, b := []int{1, 2, 3}, []int{1, 2, 3}
+    var eq bool = true
+	if len(a) != len(b) {
+		eq = false
+	}
+ 
+	for i, valueA := range a {
+		if valueA != b[i] {
+			eq = false // don't check further, break!
+			break
+		}
+	}
+	
+	if eq {
+		fmt.Println("a and b slices are equal")
+	} else {
+		fmt.Println("a and b slices are not equal")
+	}
+
 
 
 }
