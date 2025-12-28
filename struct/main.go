@@ -14,6 +14,11 @@ func main(){
 // Create instructor using factory
 	kyle := data.NewInstructor("kyln","Simpson")
 
+
+// Print using methods
+	print(max.Print())
+	print(kyle.Print())
+
 // Create course with embedded instructor
 	goCourse := data.Course{Id: 2, Name: "Go Basic", Instructor: max }
 	fmt.Printf("%v",goCourse)
@@ -32,7 +37,4 @@ func main(){
 		fmt.Println(course)
 	}
 
-// Print using methods
-	print(max.Print())
-	print(kyle.Print())
 }

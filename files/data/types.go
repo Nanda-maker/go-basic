@@ -6,7 +6,8 @@ type Location string
 // 	// TODO claculatyion
 // 	return 10
 // }
-func(origin Location) DistanceTo(destination Location) distance{
+// this method is associated with Location type and (origin Location) - receiver
+func (origin Location) DistanceTo(destination Location) distance{
 	// TODO calculation
 	return 10
 }
