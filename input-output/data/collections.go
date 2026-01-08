@@ -157,9 +157,23 @@ func init(){
 	} else {
 		fmt.Println("a and b slices are not equal")
 	}
+	// append() returns a new slice after appending a value to its end
+    numbers = append(numbers, 10)
+    fmt.Println(numbers) //-> [2 3 10]
 
+	// The append() function creates a new backing array with a larger capacity to avoid creating a new backing array when the next append() is called.
+	n1 := []int{10, 20, 30, 40}
+    n1 = append(n1, 100)
+    fmt.Println(len(n1), cap(n1))
 
-
+	// copy() function copies elements into a destination slice from a source slice and returns the number of elements copied.
+    // if the slices don't have the same no of elements, it copies the minimum of length of the slices
+    src := []int{10, 20, 30}
+    dst := make([]int, len(src))
+    nnm:= copy(dst, src)
+    fmt.Println(src, dst, nnm) // => [10 20 30] [10 20 30] 3
+ 
 }
+
 
  
