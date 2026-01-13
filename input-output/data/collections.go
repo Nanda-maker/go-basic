@@ -158,6 +158,9 @@ func init(){
 		fmt.Println("a and b slices are not equal")
 	}
 	// append() returns a new slice after appending a value to its end
+	//pointer → backing array
+//length  → number of accessible elements
+//capacity → total space available in backing array from start index
     numbers = append(numbers, 10)
     fmt.Println(numbers) //-> [2 3 10]
 
