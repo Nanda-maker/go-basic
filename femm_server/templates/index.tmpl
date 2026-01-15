@@ -35,7 +35,7 @@
     <main>
       {{range . }}
       <article style="border-top: 10px solid {{ .Color }}" 
-      class ="{{ if .CurrentlyOpened }} opened {{ else }} closed {{ end }}">
+      class ="{{- if .CurrentlyOpened -}} opened {{- else -}} closed {{- end -}}">
         <h2>{{ .Title }}</h2>
         <p>
           {{.Description}}

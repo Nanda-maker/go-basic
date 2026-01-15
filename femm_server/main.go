@@ -6,6 +6,8 @@ import (
 	"go/femm_server/data"
 	"net/http"
 	"text/template"
+
+	"github.com/gin-gonic/gin"
 )
 
 func handleHello(w http.ResponseWriter, r *http.Request) {
@@ -25,6 +27,18 @@ func handleTemplate(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+
+	go func() {
+	router := gin.Default()
+  router.GET("/ping", func(c *gin.Context) {
+    c.JSON(200, gin.H{
+      "message": "pong",
+    })
+  })
+  router.Run() // listens on 0.0.0.0:8080 by default
+}()
+
+
 	server := http.NewServeMux()
 	server.HandleFunc("/hello", handleHello) //pass func as an argument in Go
 	server.HandleFunc("/template", handleTemplate)
